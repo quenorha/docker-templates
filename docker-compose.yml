@@ -6,9 +6,9 @@ services:
       - "8086:8086"
     networks:
       - tignetwork
-     volumes:
+    volumes:
       - v_influxdb:/var/lib/influxdb
-     restart: unless-stopped
+    restart: unless-stopped
 
   frontend:
     image: grafana/grafana-oss
@@ -18,7 +18,7 @@ services:
       - v_grafana:/var/lib/grafana
     networks:
       - tignetwork
-     restart: unless-stopped
+    restart: unless-stopped
 
 volumes:
   v_influxdb:
