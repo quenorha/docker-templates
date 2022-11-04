@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: influxdb:1.8.10
+    ports:
+      - "8086:8086"
+    networks:
+      - tignetwork
+     volumes:
+      - v_influxdb:/var/lib/influxdb
+     restart: unless-stopped
+
+  frontend:
+    image: grafana/grafana-oss
+    ports:
+      - "3000:3000"
+    volumes:
+      - v_grafana:/var/lib/grafana
+    networks:
+      - tignetwork
+     restart: unless-stopped
+
+volumes:
+  v_influxdb:
+  v_grafana:
+
+networks:
+  # The presence of these objects is sufficient to define them
+  tignetwork: {}
