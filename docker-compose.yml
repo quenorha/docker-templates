@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  db:
+  c_influxdb:
     image: influxdb:1.8.10
     ports:
       - "8086:8086"
@@ -10,7 +10,7 @@ services:
       - v_influxdb:/var/lib/influxdb
     restart: unless-stopped
 
-  frontend:
+  c_grafana:
     image: grafana/grafana-oss
     ports:
       - "3000:3000"
