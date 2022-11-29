@@ -23,7 +23,7 @@
     "restart_policy": "unless-stopped",
     "name": "telegraf_docker",
     "platform": "linux",
-    "network": "mtignetwork"
+    "network": "mtignetwork",
     "volumes": [
       {  "/var/run/docker.sock":"/var/run/docker.sock"
       },
