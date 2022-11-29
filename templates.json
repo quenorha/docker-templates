@@ -8,8 +8,8 @@
 			"name": "wago_mtig",
 			"platform": "linux",
 			"repository": {
-				"stackfile": "docker-compose.yml",
-				"url": "https://github.com/quenorha/docker-templates"
+				"url": "http://github.com/quenorha/docker-templates",
+				"stackfile": "docker-compose.yml"
 			}
 		},
 		{
