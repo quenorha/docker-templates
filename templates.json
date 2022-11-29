@@ -1,18 +1,17 @@
 {
-"version": "2",
-"templates":
-[
+  "version": "2",
+  "templates": [
   {
-    "type": 1,
+    "type": 3,
     "title": "WAGO MTIG Stack",
     "logo": "https://github.com/quenorha/docker-templates/blob/main/images/wagoopensource.png?raw=true",
     "description": "Deploy the base stack composed if Mosquitto, Telegraf(with MQTT Input plugin), InfluxDB, Grafana",
     "name": "wago_mtig",
     "platform": "linux",
-	"repository": {
-                "stackfile": "docker-compose.yml",
-                "url": "https://github.com/quenorha/docker-templates"
-            },
+    "repository": {
+      "stackfile": "docker-compose.yml",
+      "url": "https://github.com/quenorha/docker-templates"
+    },
   },
  {
     "type": 1,
@@ -25,13 +24,12 @@
     "name": "telegraf_docker",
     "platform": "linux",
     "network": "mtignetwork"
-	"volumes": [
-	  {  "/var/run/docker.sock":"/var/run/docker.sock"
-	  },
-	  {  "$(pwd):/conf/telegrafdocker.conf":"/etc/telegraf/telegraf.conf",
-	     "readonly" : true
+    "volumes": [
+      {  "/var/run/docker.sock":"/var/run/docker.sock"
+      },
+      {  "$(pwd):/conf/telegrafdocker.conf":"/etc/telegraf/telegraf.conf",
+         "readonly" : true
       }
-		  
   }
 ]
 }
