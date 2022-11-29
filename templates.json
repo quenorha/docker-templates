@@ -9,7 +9,7 @@
 			"platform": "linux",
 			"repository": {
 				"url": "http://github.com/quenorha/docker-templates",
-				"stackfile": "docker-compose.yml"
+				"stackfile": "tig/docker-compose.yml"
 			}
 		},
 		{
