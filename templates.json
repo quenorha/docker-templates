@@ -30,6 +30,7 @@
       {  "$(pwd):/conf/telegrafdocker.conf":"/etc/telegraf/telegraf.conf",
          "readonly" : true
       }
+     ]
   }
 ]
 }
