@@ -1,24 +1,45 @@
 version: "3.9"
 services:
-  c_influxdb:
+  influxdb:
     image: influxdb:1.8.10
     ports:
       - "8086:8086"
     networks:
-      - tignetwork
+      mtignetwork:
+          aliases:
+             - c_influxdb
     volumes:
-      - v_influxdb:/var/lib/influxdb
+      - "v_influxdb:/var/lib/influxdb"
     restart: unless-stopped
 
-  c_grafana:
+  grafana:
     image: grafana/grafana-oss
     ports:
       - "3000:3000"
     volumes:
-      - v_grafana:/var/lib/grafana
+      - "v_grafana:/var/lib/grafana"
     networks:
-      - tignetwork
+      - mtignetwork
     restart: unless-stopped
+    
+  mosquitto:
+    image: eclipse-mosquitto
+    ports: 
+      - "1883:1883"
+      - "9001:9001"
+    networks:
+      mtignetwork:
+          aliases:
+             -c_mosquitto
+    restart: unless_stopped
+    
+  telegraf:
+    image: telegraf
+    networks:
+      - mtignetwork
+    restart: unless-stopped
+    volumes:
+      - "$(pwd):/conf/telegrafmqtt.conf:/etc/telegraf/telegraf.conf:ro"
 
 volumes:
   v_influxdb:
@@ -26,4 +47,4 @@ volumes:
 
 networks:
   # The presence of these objects is sufficient to define them
-  tignetwork: {}
+  mtignetwork: {}
